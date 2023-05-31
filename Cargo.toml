@@ -1,23 +1,49 @@
+[workspace]
+
+members = [
+    "adder",
+    "add_lib1",
+]
+
+[profile.dev]
+opt-level = 0
+
+[profile.release]
+opt-level = 3
+
 [package]
-name = "systemd-rust-ianaio"
+name = "rustwasmsystemd"
 version = "0.1.0"
 authors = ["Jaroslaw Cichon <dev@iana.io>"]
 edition = "2021"
-homepage = "https://github.com/ianaio/systemd-rust-ianaio#readme"
-keywords = ["ianaio","systems", "systemd", "rust", "debian"]
-repository = "https://github.com/ianaio/systemd-rust-ianaio"
+homepage = "https://github.com/ianaio/rustwasmsystemd#readme"
+repository = "https://github.com/ianaio/rustwasmsystemd"
 readme = "README.md"
+description = "IANA SYSTEMS - systemd - workspaces"
+documentation = "https://docs.iana.io/rustwasmsystemd"
+keywords = ["ianaio","rust", "deploy", "systemd", "development", "cloud"]
+
+default-run = "adder"
 
 [package.metadata.deb]
+maintainer = "Wojciech Cichon <cichyboom@gmail.com>"
+copyright = "2023-2033, Jaroslaw Cichon, Wojciech Cichon"
+license-file = ["LICENSE.md", "5"]
 depends = "$auto, systemd"
-extended-description = "System for systemd rust from debian"
+extended-description = """\
+Rust - systemd - workspaces - binary - libraries - debian \
+System for systemd rust from debian with the step by step instructions for how to build your own cloud server to become developer for free"""
 section = "admin"
 priority = "optional"
 assets = [
-    ["target/release/systemd-rust-ianaio", "usr/bin/rust", "755"],
-    ["debian/rust.service", "/lib/systemd/system/rust.service", "644"],
+    ["target/release/adder", "usr/bin/rustwasm", "755"],
+    ["debian/rustwasm.service", "/lib/systemd/system/rustwasm.service", "644"],
 ]
+
 maintainer-scripts = "debian/scripts"
+
+[dev-dependencies]
+wasm-bindgen-test = "0.3.34"
 
 [dependencies]
 cargo-deb = "1.43.0"
@@ -34,32 +60,14 @@ console_error_panic_hook = { version = "0.1.7", optional = true }
 # `wee_alloc` is a tiny allocator for wasm that is only ~1K in code size
 # compared to the default allocator's ~10K. It is slower than the default
 # allocator, however.
+# wee_alloc = { version = "0.4.5", optional = true }
 
 [lib]
 crate-type = ["cdylib", "rlib"]
+name = "add_lib1"
+path = "add_lib1/src/lib.rs"
+doc = true
 
 [features]
 default = ["console_error_panic_hook"]
-
-[dependencies]
-wasm-bindgen = "0.2.84"
-
-# The `console_error_panic_hook` crate provides better debugging of panics by
-# logging them with `console.error`. This is great for development, but requires
-# all the `std::fmt` and `std::panicking` infrastructure, so isn't great for
-# code size when deploying.
-console_error_panic_hook = { version = "0.1.7", optional = true }
-
-# `wee_alloc` is a tiny allocator for wasm that is only ~1K in code size
-# compared to the default allocator's ~10K. It is slower than the default
-# allocator, however.
-
-# wee_alloc = { version = "0.4.5", optional = true }
-
-[dev-dependencies]
-wasm-bindgen-test = "0.3.34"
-
-[profile.release]
-# Tell `rustc` to optimize for small code size.
-opt-level = "s"
 
