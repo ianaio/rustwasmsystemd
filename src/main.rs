@@ -1,10 +1,9 @@
 #![feature(proc_macro_hygiene, decl_macro)]
-
 #[macro_use] extern crate rocket;
 
-#[get("/")]
+#[get("/test")]
 fn index() -> &'static str {
-    "IANA SYSTEMS - RUSTWASM SYSETMD"
+    "IANA SYSTEMS - RS - ROCKET"
 }
 
 fn main() {

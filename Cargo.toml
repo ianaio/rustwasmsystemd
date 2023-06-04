@@ -22,8 +22,8 @@ readme = "README.md"
 description = "IANA SYSTEMS - systemd - workspaces"
 documentation = "https://docs.iana.io/rustwasmsystemd"
 keywords = ["ianaio","rust", "deploy", "systemd", "development", "cloud"]
-
-default-run = "adder"
+license = "LICENSE.md"
+# default-run = "adder"
 
 [package.metadata.deb]
 maintainer = "Wojciech Cichon <cichyboom@gmail.com>"

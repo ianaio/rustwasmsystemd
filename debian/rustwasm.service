@@ -1,12 +1,12 @@
 [Unit]
-Description=IANA SYSTEMS - rust-wasm - rust -systemd
+Description=Rust Rocket Web Application Example from steadylearner
 [Service]
 User=root
 Group=root
 WorkingDirectory=/root/rustwasmsystemd
 Environment="ROCKET_ENV=prod"
 Environment="ROCKET_ADDRESS=0.0.0.0"
-Environment="ROCKET_PORT=4262"
+Environment="ROCKET_PORT=8080"
 Environment="ROCKET_LOG=critical"
 ExecStart=/root/rustwasmsystemd/target/release/rustwasmsystemd
 [Install]

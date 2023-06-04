@@ -1,0 +1,18 @@
+[package]
+name = "add_lib1"
+version = "0.1.0"
+edition = "2021"
+authors = ["Jaroslaw Cichon <dev@iana.io>"]
+homepage = "https://github.com/ianaio/rustwasmsystemd#readme"
+keywords = ["ianaio","systems", "systemd", "rust", "debian"]
+repository = "https://github.com/ianaio/rustwasmsystemd"
+description = "IANA SYSTEMS - rust-wasm - rust  - systemd - workspaces"
+license = "LICENSE.md"
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+
+[dependencies]
+rand = "0.8.5"
+wasm-bindgen = "0.2.84"
+cargo-deb = "1.43.0"
+rocket = "0.4.10"
+
